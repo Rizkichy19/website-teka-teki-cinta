@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Logika untuk akhir.html (Menampilkan Pesan Cinta dari Database) ---
+   // --- Logika untuk akhir.html (Menampilkan Pesan Cinta TANPA Database) ---
     const pesanCintaContainer = document.getElementById('pesanCintaContainer');
     const isiPesanCintaDiv = document.getElementById('isiPesanCinta');
 
@@ -179,29 +180,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        console.log("Semua teka-teki selesai, mencoba mengambil pesan cinta dari PHP.");
-        fetch('http://localhost/website-teka-teki-cinta/get_pesan_cinta.php')
-            .then(response => {
-                console.log("Fetch response received:", response);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Data dari PHP:", data);
-                if (data.success && data.message) {
-                    isiPesanCintaDiv.textContent = data.message;
-                    console.log("Pesan cinta berhasil ditampilkan.");
-                } else {
-                    isiPesanCintaDiv.textContent = 'Gagal memuat pesan cinta. Silakan coba lagi nanti.';
-                    console.error('API Error:', data.message || 'Unknown error');
-                }
-            })
-            .catch(error => {
-                console.error('Ada masalah dengan operasi fetch:', error);
-                isiPesanCintaDiv.textContent = 'Maaf, terjadi kesalahan saat memuat pesan. Pastikan XAMPP dan koneksi database berfungsi.';
-            });
+        // --- Bagian ini adalah pengganti untuk pemanggilan database ---
+        // Anda bisa menaruh pesan cinta langsung di sini
+        const pesanCintaStatis = `Selamat, sayangku! Kamu berhasil menyelesaikan semua teka-teki ini. Setiap teka-teki adalah bagian dari perjalanan cinta kita, dan setiap jawaban benar adalah bukti betapa kuatnya ikatan kita. Terima kasih sudah selalu ada di sisiku. Aku mencintaimu lebih dari kata-kata yang bisa ungkapkan. Ini adalah hadiah kecil dariku untukmu, semoga kamu suka!
+
+GET WELL SOON CANTIKKU BESOK" GA USAH NGEYEL KALO DIBILANGIN ❤️`;
+        
+        isiPesanCintaDiv.textContent = pesanCintaStatis;
+        console.log("Pesan cinta statis berhasil ditampilkan.");
+        // --- Akhir dari pengganti database ---
+
     }
 
 }); // Akhir dari DOMContentLoaded
