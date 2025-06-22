@@ -1,0 +1,74 @@
+/* style.css (Disesuaikan untuk Opsi B) */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Warna latar belakang terang */
+    color: #343a40; /* Warna teks gelap */
+    min-height: 100vh; /* Memastikan body mengisi seluruh tinggi viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Agar header, main, dan footer terdistribusi dengan baik */
+.d-flex.flex-column.min-vh-100 {
+    min-height: 100vh;
+}
+
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+header {
+    background-color: #ffe0f0; /* Warna pink muda */
+    color: #d81b60; /* Warna pink gelap */
+    border-bottom: 1px solid #fbcfe8;
+}
+
+h1, h2 {
+    color: #d81b60; /* Warna pink gelap untuk judul */
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #e91e63; /* Warna pink cerah */
+    border-color: #e91e63;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #c2185b; /* Warna pink lebih gelap saat hover */
+    border-color: #c2185b;
+    transform: translateY(-2px); /* Efek sedikit terangkat */
+}
+
+.lead {
+    color: #6c757d;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+#pesanCintaContainer {
+    border: 2px dashed #ff80ab;
+    background-color: #fff0f5;
+}
+
+footer {
+    background-color: #ffe0f0;
+    color: #d81b60;
+    margin-top: auto; /* Memastikan footer selalu di bawah */
+}
+
+/* Style untuk pesan sukses/gagal teka-teki */
+.pesan-sukses {
+    color: green;
+    font-weight: bold;
+}
+
+.pesan-gagal {
+    color: red;
+    font-weight: bold;
+}
