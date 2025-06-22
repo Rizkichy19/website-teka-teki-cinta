@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Logika untuk akhir.html (Menampilkan Pesan Cinta dari Database) ---
    // --- Logika untuk akhir.html (Menampilkan Pesan Cinta TANPA Database) ---
     const pesanCintaContainer = document.getElementById('pesanCintaContainer');
     const isiPesanCintaDiv = document.getElementById('isiPesanCinta');
@@ -180,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // --- Bagian ini adalah pengganti untuk pemanggilan database ---
         // Anda bisa menaruh pesan cinta langsung di sini
         const pesanCintaStatis = `Selamat, sayangku! Kamu berhasil menyelesaikan semua teka-teki ini. Setiap teka-teki adalah bagian dari perjalanan cinta kita, dan setiap jawaban benar adalah bukti betapa kuatnya ikatan kita. Terima kasih sudah selalu ada di sisiku. Aku mencintaimu lebih dari kata-kata yang bisa ungkapkan. Ini adalah hadiah kecil dariku untukmu, semoga kamu suka!
 
