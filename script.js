@@ -1,4 +1,4 @@
-// --- script.js (Versi Final dengan Timer Real-time di timer_result.html) ---
+// --- script.js ---
 
 // Fungsi yang akan dijalankan ketika DOM (struktur HTML) sudah dimuat sepenuhnya
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('teka4_solved', 'false'); 
             localStorage.setItem('timer_result_shown', 'false'); // Untuk memastikan halaman timer sudah dilihat
             // Bersihkan juga data waktu sebelumnya jika ada
-            localStorage.removeItem('relationship_start_date'); // <-- BARIS BARU INI
+            localStorage.removeItem('relationship_start_date'); 
             window.location.href = 'teka1.html';
         });
     }
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cekTeka2Btn.addEventListener('click', () => {
             const pesanDiv = document.getElementById('pesanTeka2');
             
-            // --- CARA BARU MENGAMBIL JAWABAN DARI CHECKBOX (BISA LEBIH DARI SATU) ---
             const selectedOptions = document.querySelectorAll('input[name="jawabanTeka2Options"]:checked');
             let jawabanUserArray = [];
             selectedOptions.forEach(option => {
@@ -80,17 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Teka-teki 2: Tidak ada jawaban dipilih.");
                 return;
             }
-            // ------------------------------------------------------------------------
-
             const jawabanBenarTeka2 = ["nasi goreng", "mie ayam"]; // Daftar semua jawaban yang benar
             
             console.log("Jawaban User (Teka 2):", jawabanUserArray);
             console.log("Jawaban Benar (Teka 2):", jawabanBenarTeka2);
 
-            // --- Logika Pengecekan untuk Multiple Checkbox ---
-            // 1. Pastikan jumlah jawaban yang dipilih sama dengan jumlah jawaban yang benar
-            // 2. Pastikan semua jawaban yang dipilih ada di daftar jawaban benar
-            // 3. Pastikan semua jawaban benar ada di daftar jawaban yang dipilih (tidak ada yang terlewat)
             const isCorrect = 
                 jawabanUserArray.length === jawabanBenarTeka2.length &&
                 jawabanUserArray.every(val => jawabanBenarTeka2.includes(val));
@@ -104,13 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
             } else {
                 pesanDiv.innerHTML = '<span class="pesan-gagal">Waduh, masa makanan favoritku nggak tahu sih? Coba ingat-ingat lagi waktu kita makan bareng! 🤔</span>';
-                // Batalkan semua pilihan yang dicentang jika salah
                 selectedOptions.forEach(option => option.checked = false); 
                 console.log("Teka-teki 2 jawaban salah.");
             }
         });
     }
-
 
     // --- Logika untuk teka3.html (Soal Matematika) ---
     const cekMatematikaBtn = document.getElementById('cekMatematikaBtn');
@@ -218,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         window.location.href = 'timer_result.html'; // <-- Mengarahkan ke halaman hasil timer
                     }, 1500); // Redirect setelah 1.5 detik
-                    // -------------------------------------------------------------------
 
                 } else {
                     pesanTeka4Div.innerHTML = '<span class="pesan-gagal">Ups, password salah! Tanggal jadian kita kok lupa sih, Sayang? 😟</span>';
@@ -234,13 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalTimeDisplay = document.getElementById('finalTimeDisplay');
     const lanjutPesanCintaBtn = document.getElementById('lanjutPesanCintaBtn');
 
-    // Variabel untuk menyimpan interval agar bisa dihentikan nanti
-    let timerResultInterval; 
+    let timerResultInterval; // Variabel untuk menyimpan interval agar bisa dihentikan nanti
 
     if (finalTimeDisplay && lanjutPesanCintaBtn) { // Pastikan elemen-elemen ada di halaman
         console.log("Halaman Hasil Timer dimuat.");
 
-        // Pengamanan minimal: Pastikan teka-teki 4 sudah selesai DAN tanggal jadian ada
         if (localStorage.getItem('teka4_solved') !== 'true' || !localStorage.getItem('relationship_start_date')) {
             console.log("Teka-teki 4 belum selesai atau tanggal tidak ada, redirect ke index.html.");
             alert('Kamu harus menyelesaikan teka-teki sebelumnya dulu!');
@@ -249,11 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         localStorage.setItem('timer_result_shown', 'true'); // Tandai bahwa hasil timer sudah dilihat
 
-        // Ambil tanggal jadian dari localStorage
         const storedAnniversaryDateString = localStorage.getItem('relationship_start_date');
         const anniversaryDateObj = new Date(storedAnniversaryDateString); // Ubah kembali jadi Date object
 
-        // Fungsi untuk mengupdate timer setiap detik
         const updateTimerDisplay = () => {
             const now = new Date();
             
@@ -264,13 +250,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let minutes = now.getMinutes() - anniversaryDateObj.getMinutes();
             let seconds = now.getSeconds() - anniversaryDateObj.getSeconds();
 
-            // Penyesuaian jika nilai negatif (misal: jam saat ini < jam anniversary)
             if (seconds < 0) { minutes--; seconds += 60; }
             if (minutes < 0) { hours--; minutes += 60; }
             if (hours < 0) { days--; hours += 24; }
             if (days < 0) { 
                 months--;
-                const tempDate = new Date(now.getFullYear(), now.getMonth(), 0); // Last day of previous month
+                const tempDate = new Date(now.getFullYear(), now.getMonth(), 0);
                 days += tempDate.getDate();
             }
             if (months < 0) { 
@@ -278,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 months += 12;
             }
             
-            // Pastikan tidak ada nilai negatif yang tersisa
             years = Math.max(0, years);
             months = Math.max(0, months);
             days = Math.max(0, days);
@@ -296,10 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         };
 
-        // Panggil fungsi update segera setelah halaman dimuat
-        updateTimerDisplay();
-        // Kemudian set interval untuk memperbarui setiap detik
-        timerResultInterval = setInterval(updateTimerDisplay, 1000);
+        updateTimerDisplay(); // Panggil fungsi update segera setelah halaman dimuat
+        timerResultInterval = setInterval(updateTimerDisplay, 1000); // Kemudian set interval untuk memperbarui setiap detik
 
         lanjutPesanCintaBtn.addEventListener('click', () => {
             console.log("Mengarahkan ke halaman pesan cinta.");
@@ -314,7 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pesanCintaContainer && isiPesanCintaDiv) { // Pastikan elemen-elemen ada di halaman
         console.log("Halaman Akhir dimuat.");
-        // Pengamanan minimal: Pastikan SEMUA teka-teki sudah selesai dan hasil timer sudah dilihat
         if (localStorage.getItem('teka1_solved') !== 'true' ||
             localStorage.getItem('teka2_solved') !== 'true' ||
             localStorage.getItem('teka3_solved') !== 'true' ||
