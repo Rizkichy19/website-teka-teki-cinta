@@ -3,28 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teka-teki 1: Gambar Kenangan</title>
+    <title>Teka-teki 1: Gambar Kenangan Kocak!</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tambahan untuk elemen lucu di teka-teki */
+        .riddle-image-frame {
+            border: 5px solid #ff80ab; /* Border pink yang lucu */
+            border-radius: 15px;
+            padding: 10px;
+            background-color: #fff0f5; /* Latar belakang lembut */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .riddle-image-frame:hover {
+            transform: scale(1.02); /* Sedikit membesar saat hover */
+        }
+        .cute-illustration {
+            max-width: 150px;
+            margin-bottom: 1em;
+            animation: bounce 2s infinite; /* Animasi bouncing */
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header class="text-center py-4">
-        <h2>Teka-teki 1: Tebak Gambar Kenangan</h2>
+        <h2>Teka-teki 1: Detektif Kenangan Kita! 🕵️‍♀️</h2>
     </header>
 
     <main class="container my-auto text-center">
-        <p class="lead">Gambar ini diambil saat kita pertama kali pergi ketemu hayoo tebak ^_^ (isi nama dengan nama tempatnya yaw)!</p>
-        <img src="images/kenangan1.jpg" alt="Gambar Kenangan 1" class="img-fluid my-4" style="max-height: 400px;">
-        <div class="input-group mb-3 mx-auto" style="max-width: 500px;">
-            <input type="text" class="form-control" id="jawabanTeka1" placeholder="Jawabanmu...">
-            <button class="btn btn-primary" id="cekTeka1Btn">Cek Jawaban</button>
+        <img src="images/nailong_lucuw.png" alt="Ilustrasi Detektif Lucu" class="img-fluid cute-illustration">
+        <p class="lead">Waktunya mengasah ingatanmu, Sayang! Lihat baik-baik gambar di bawah ini.</p>
+        <p>Jawab yang bener jangan sampe salah yaw 😉</p>
+        
+        <div class="riddle-image-frame mx-auto mb-4" style="max-width: 450px;">
+            <img src="images/kenangan1.jpg" alt="Gambar Kenangan 1" class="img-fluid" style="max-height: 400px;">
         </div>
+        
+        <div class="form-check text-start mx-auto" style="max-width: 500px;">
+            <div class="mb-2">
+                <input class="form-check-input" type="radio" name="jawabanTeka1Options" id="optionA" value="tempo gelato">
+                <label class="form-check-label" for="optionA">
+                    🍦 Tempo Gelato Yogya
+                </label>
+            </div>
+            <div class="mb-2">
+                <input class="form-check-input" type="radio" name="jawabanTeka1Options" id="optionB" value="jalan malioboro">
+                <label class="form-check-label" for="optionB">
+                    🛍️ Jalan Malioboro
+                </label>
+            </div>
+            <div class="mb-2">
+                <input class="form-check-input" type="radio" name="jawabanTeka1Options" id="optionC" value="gunung merapi">
+                <label class="form-check-label" for="optionC">
+                    ⛵ Pantai Slili Gunkid 
+                </label>
+            </div>
+            <div class="mb-2">
+                <input class="form-check-input" type="radio" name="jawabanTeka1Options" id="optionD" value="candi borobudur">
+                <label class="form-check-label" for="optionD">
+                    ⛵ Pantai PAI Tegal
+                </label>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-4" id="cekTeka1Btn">Buka Kenangan Ini!</button>
         <div id="pesanTeka1" class="mt-3"></div>
     </main>
 

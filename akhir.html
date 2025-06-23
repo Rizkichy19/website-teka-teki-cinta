@@ -3,27 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hadiah Untukmu, Sayang!</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Selamat, Sayangku! Hadiah Untukmu! 🎉</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS khusus untuk akhir.html */
+        #pesanCintaContainer {
+            background-image: url('images/scroll_bg.png'); /* Gambar latar belakang gulungan kertas */
+            background-size: cover;
+            background-position: center;
+            border: 5px double #fbc02d; /* Border seperti emas */
+            border-radius: 20px;
+            padding: 3em 2em; /* Padding lebih besar */
+            margin-top: 2em;
+            margin-bottom: 2em;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+            animation: fadeInScale 1s ease-out forwards; /* Animasi muncul */
+        }
+
+        #pesanCintaContainer::before {
+            content: '💌'; /* Emoji surat sebagai dekorasi */
+            position: absolute;
+            top: -25px; /* Sesuaikan posisi agar pas di tengah atas */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em; /* Ukuran emoji lebih besar */
+            background-color: #fff0f5;
+            border-radius: 50%;
+            padding: 5px 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        #isiPesanCinta {
+            font-family: Georgia, "Times New Roman", Times, serif; /* Font serif yang elegan */
+            font-size: 1.8em; /* Ukuran font lebih besar */
+            color: #880e4f; /* Warna teks pink gelap */
+            line-height: 1.6;
+            white-space: pre-wrap; /* Mempertahankan baris baru dari JS */
+            text-align: justify; /* Rata kiri-kanan untuk kerapian */
+        }
+        
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header class="text-center py-4">
-        <h1>Selamat, Sayangku! 🎉</h1>
+        <h1>Selamat, Sayangku! Kamu Hebat Sekali! 🎉</h1>
     </header>
 
     <main class="container my-auto text-center">
-        <p class="lead">Kamu berhasil menyelesaikan semua petualangan ini! Ini adalah pesan spesial untukmu:</p>
-        <div id="pesanCintaContainer" class="card p-4 mt-4 bg-light shadow-sm mx-auto" style="max-width: 600px;">
+        <img src="images/celebrate_love.png" alt="Ilustrasi Perayaan Cinta" class="img-fluid cute-illustration">
+        <p class="lead">Misi selesai! Kamu berhasil melewati semua tantangan dan teka-teki cinta ini!</p>
+        <p class="mb-4">Sebagai hadiah untuk kecerdasan dan kesabaranmu, inilah pesan spesial dari hatiku:</p>
+        
+        <div id="pesanCintaContainer" class="card p-4 mx-auto" style="max-width: 700px;">
             <p id="isiPesanCinta" class="fs-5 text-muted fst-italic">Memuat pesan rahasia...</p>
         </div>
-        <p class="mt-4">I love U .</p>
+        <p class="mt-4 fs-4">Wopyuu ❤️</p>
     </main>
 
     <footer class="text-center py-3 mt-auto">
